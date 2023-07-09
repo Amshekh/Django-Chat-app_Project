@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} Django Chat App by Amshekh Labs pvt ltd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-emerald-700">
+    <nav class="flex items-center justify-between px-4 py-6 bg-emerald-600">
+        <div>
+            <a><img src="../static/images/Logo_ALPL.png" height="75px" width="90px" style="margin-bottom: -40px;"/></a>
+        </div>
+        <div>
+            <a href="/" class="text-xxl text-white" style="font-size: x-large; margin-inline-start: -800px;"><b>DjangoChat by Amshekh Labs</b></a>
+        </div>   
+        <div class="flex items-center space-x-4">
+            {% if request.user.is_authenticated %}
+                <a href="/rooms/" class="text-white text-xxl hover:text-gray-200">Rooms</a>
+
+                <a href="/logout/" class="px-5 py-3 rounded-xl text-white text-xxl bg-green-600 hover:bg-emerald-800"><b>Log out</b></a>
+            {% else %}
+                <a href="/login/" class="text-white text-xxl hover:text-gray-200"><b>Log in</b></a>
+
+                <a href="/signup/" class="px-5 py-3 rounded-xl text-white text-xxl bg-green-600 hover:bg-emerald-800"><b>Sign Up</b></a>
+            {% endif %}    
+        </div>
+    </nav> 
+    <marquee class="dir-left bg-color-white">
+        <p class="mt-2 font-semibold text-white text-xl">Popular chat app by acclaimed FullStack Python Developer & recipient of the ACM A.M. Turing Award 2023 : Er. Amit Shekhar </p>
+    </marquee>
+
+    {% block content %}
+    {% endblock %}
+
+    {% block jscripts %}
+    {% endblock %}
+</body>
+</html>
